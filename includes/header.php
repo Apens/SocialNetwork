@@ -1,5 +1,7 @@
 <?php
 require 'config/config.php';
+include 'includes/classes/User.php';
+include 'includes/classes/Post.php';
 
 if(isset($_SESSION['username'])){
     $userLoggedIn = $_SESSION['username'];
@@ -49,7 +51,7 @@ else {
             <a href="#">
                 <i class="fa fa-bell-o"></i>
             </a>
-            <a href="#">
+            <a href="request.php">
                 <i class="fa fa-users"></i>
             </a>
             <a href="#">
