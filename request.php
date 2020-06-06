@@ -2,7 +2,7 @@
 include 'includes/header.php';
 ?>
 
-<div class="main_column" id="main_column">
+<div class="main_column column" id="main_column">
     <h4>Friend Request</h4>
 
     <?php
@@ -35,8 +35,8 @@ include 'includes/header.php';
             }
             ?>
             <form action="request.php" method="POST">
-                <input type="submit" name="accept_request<?= $user_from; ?>" id="accept_button" value="Accepter">
-                <input type="submit" name="ignore_request<?= $user_from; ?>" id="ignore_button" value="Ignorer">
+                <input type="submit" name="accept_request<?= $user_from; ?>" class="success" id="accept_button" value="Accepter">
+                <input type="submit" name="ignore_request<?= $user_from; ?>" class="danger" id="ignore_button" value="Ignorer">
 
             </form>
             <?php
