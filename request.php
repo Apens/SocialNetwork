@@ -25,6 +25,7 @@ include 'includes/header.php';
                 $delete_query = mysqli_query($con, "DELETE FROM friend_request WHERE user_to = '$userLoggedIn' AND user_from = '$user_from'");
                 echo "Vous etes maintenant amis !";
                 header("Location: request.php");
+//                test github
             }
 
             if (isset($_POST['ignore_request'.$user_from])) {
