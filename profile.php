@@ -71,15 +71,49 @@ if (isset($_POST['respond_request'])){
 
                     }
                 ?>
-
             </form>
+            <input type="submit" class="deep_blue" data-toggle="modal" data-target="#post_form" value="Post Something">
 
 <!--            --><?//= var_dump($user_array); ?>
         </div> <!-- /profile left -->
 
         <div class="main_column column">
             <?= $username ?>
+
         </div> <!-- fin main_column -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="post_form" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ecrire un truc !</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Ceci apparaitra sur le profil de l'utilisateur ainsi que son flux d'actualité</p>
+
+                        <form action="" method="POST" class="profile_post">
+                            <div class="form-group">
+                                <textarea name="post_body" id="" cols="30" rows="10" class="form-control"></textarea>
+                                <input type="hidden" name="user_from" value="<?= $userLoggedIn ?>">
+                                <input type="hidden" name="user_to" value="<?= $username ?>">
+
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /Modal -->
 
     </div> <!-- wrapper -->
 
