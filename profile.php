@@ -77,8 +77,10 @@ if (isset($_POST['respond_request'])){
 <!--            --><?//= var_dump($user_array); ?>
         </div> <!-- /profile left -->
 
-        <div class="main_column column">
-            <?= $username ?>
+        <div class="profile_main_column column">
+            <div class="posts_area">
+            </div>
+            <img id="loading" src="assets/images/icons/loading.gif" alt="">
 
         </div> <!-- fin main_column -->
 
@@ -114,6 +116,60 @@ if (isset($_POST['respond_request'])){
                 </div>
             </div>
         </div> <!-- /Modal -->
+
+        <script>
+            var userLoggedIn = '<?= $userLoggedIn; ?>';
+            var profileUsername = '<?= $username; ?>'
+
+            $(document).ready(function () {
+                $('#loading').show();
+
+                // Requête initiale ajax pour charger les premiers post
+                $.ajax({
+                    url: "includes/handlers/ajax_load_profile_post.php", //on rensigne l'url qui traitera les données
+                    type: "POST", // On renseigne la methode
+                    data: "page=1&userLoggedIn=" + userLoggedIn + "&profileUsername=" + profileUsername,
+                    cache: false,
+
+                    success: function (data) {
+                        $('#loading').hide();
+                        $('.posts_area').html(data) //on envoie les données collectées dans la div
+
+                    }
+                });
+
+                $(window).scroll(function () {
+                    var height = $('.posts_area').height(); // la div contenant les posts
+                    var scroll_top = $(this).scrollTop();
+                    var page = $('.posts_area').find('.nextPage').val();
+                    var noMorePosts = $('.posts_area').find('.noMorePosts').val();
+
+                    if ((document.body.scrollHeight == document.body.scrollTop + window.innerHeight)&& noMorePosts == 'false') {
+                        $('#loading').show();
+
+                        var ajaxReq = $.ajax({
+                            url: "includes/handlers/ajax_load_profile_post.php", //on rensigne l'url qui traitera les données
+                            type: "POST", // On renseigne la methode
+                            data: "page="+ page +"&userLoggedIn=" + userLoggedIn + "&profileUsername=" + profileUsername, //REQUEST d'ajax
+                            cache: false,
+
+                            success: function (response) {
+                                $('.posts_area').find('.nextPage').remove();
+                                $('.posts_area').find('.noMorePosts').remove();
+
+                                $('#loading').hide();
+                                $('.posts_area').append(response) //on ajoute d'autres données collectées dans la div
+
+                            }
+                        });
+
+                    } // Fin IF
+                    return false;
+
+                }); // Fin (window).scroll function
+
+            });
+        </script>
 
     </div> <!-- wrapper -->
 
