@@ -25,11 +25,14 @@ else {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/bootbox.min.js"></script>
+    <script src="assets/js/jcrop_bits.js"></script>
+    <script src="assets/js/jquery.Jcrop.js"></script>
     <script src="assets/js/main.js"></script>
 
     <!--  CSS  -->
     <script src="https://kit.fontawesome.com/8b16d5a62c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.Jcrop.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
