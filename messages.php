@@ -45,11 +45,18 @@ if (isset($_POST['post_message'])){
 </div> <!-- fin user_details -->
 <div class="main_column column" id="main_column">
     <?php
-    if ($user_to != "new")
+    if ($user_to != "new"){
         echo "<h4><a href='$user_to'>". $user_to_obj->getFirstAndLastname() ."</a> et toi </h4><hr><br>";
+        echo "<div class='loaded_messages'>";
+        echo $message_obj->getMessage($user_to);
+        echo "</div>";
+    }
+    else{
+        echo "<h4>New Message</h4>";
+    }
     ?>
 
-    <div class="loaded_messages">
+    <div class="messages_post">
         <form action="" method="POST">
             <?php
             if ($user_to == "new"){
