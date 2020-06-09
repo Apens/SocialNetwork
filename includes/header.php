@@ -51,8 +51,8 @@ else {
                 <i class="fa fa-home"></i>
             </a>
 
-            <a href="#">
-                <i class="fa fa-enveloppe"></i>
+            <a href="messages.php">
+                <i class="fa fa-envelope"></i>
             </a>
             <a href="#">
                 <i class="fa fa-bell-o"></i>
