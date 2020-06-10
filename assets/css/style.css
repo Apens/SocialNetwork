@@ -380,6 +380,27 @@ textarea:focus {
     min-height: 300px;
     max-height: 400px;
     overflow: auto;
+    /*scrollbar-color: transparent transparent;*/
     margin-bottom: 10px;
 }
+/*Conversation list*/
 
+
+.loaded_conversation{
+    max-height: 200px;
+    overflow: auto;
+}
+.user_found_messages{
+    border-bottom: 1px solid #D3D3D3;
+    padding: 8px 8px 10px 8px
+}
+.user_found_messages:hover{
+    background-color: #D3D3D3;
+}
+.user_found_messages img {
+    height: 35px;
+    float: left;
+}
+#grey{
+    color: #8C8C8C;
+}

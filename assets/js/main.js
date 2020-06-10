@@ -16,3 +16,7 @@ $(document).ready(function () {
         });
     });
 });
+
+function getUser(value,user) {
+
+}

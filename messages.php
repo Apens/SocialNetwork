@@ -47,7 +47,7 @@ if (isset($_POST['post_message'])){
     <?php
     if ($user_to != "new"){
         echo "<h4><a href='$user_to'>". $user_to_obj->getFirstAndLastname() ."</a> et toi </h4><hr><br>";
-        echo "<div class='loaded_messages'>";
+        echo "<div class='loaded_messages' id='scroll_messages'>";
         echo $message_obj->getMessage($user_to);
         echo "</div>";
     }
@@ -71,4 +71,20 @@ if (isset($_POST['post_message'])){
 
         </form>
     </div>
+
+    <script>
+        let div = document.getElementById('scroll_messages');
+        div.scrollTop = div.scrollHeight;
+
+    </script>
+</div>
+<div class="user_details column" id="conversations">
+    <h4>Conversation</h4>
+
+    <div class="loaded_conversation">
+        <?= $message_obj->getConvos(); ?>
+    </div>
+    <br>
+    <a href="messages.php?u=new">Nouveau message</a>
+
 </div>
