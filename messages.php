@@ -61,7 +61,9 @@ if (isset($_POST['post_message'])){
             <?php
             if ($user_to == "new"){
                 echo "A qui voulez vous envoyer un message<br><br>";
-                echo "A : <input type='text'>";
+            ?>
+                A : <input type='text'onkeyup='getUser(this.value, "<?= $userLoggedIn ?>")' name='q' placeholder='Name' autocomplete='off' id='search_text_input'>
+            <?php
                 echo  "<div class='results' ></div>";
             } else {
                 echo "<br> <textarea name='message_body' id='message_textarea' placeholder='Ecris ton message...'></textarea>";
@@ -74,7 +76,9 @@ if (isset($_POST['post_message'])){
 
     <script>
         let div = document.getElementById('scroll_messages');
-        div.scrollTop = div.scrollHeight;
+        if (div !== null){
+            div.scrollTop = div.scrollHeight;
+        }
 
     </script>
 </div>
