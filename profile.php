@@ -98,7 +98,7 @@ if (isset($_POST['respond_request'])){
             </ul>
 
             <div class="tab_content">
-                <div role="tabpanel" class="tab-pane fade in active" id="newsfeed_div">
+                <div role="tabpanel" class="tab-pane fade show active" id="newsfeed_div">
                     <div class="posts_area"></div>
                     <img id="loading" src="assets/images/icons/loading.gif" alt="">
                 </div>
@@ -108,7 +108,36 @@ if (isset($_POST['respond_request'])){
                 </div>
 
                 <div role="tabpanel" class="tab-pane fade" id="message_div">
+                    <?php
+                    $message_obj = new Message($con, $userLoggedIn);
 
+                        echo "<h4><a href='".$username."'>". $profile_user_obj->getFirstAndLastname() ."</a> et toi </h4><hr><br>";
+                        echo "<div class='loaded_messages' id='scroll_messages'>";
+                        echo $message_obj->getMessage($username);
+                        echo "</div>";
+                    ?>
+
+                    <div class="messages_post">
+                        <form action="" method="POST">
+                             <textarea name='message_body' id='message_textarea' placeholder='Ecris ton message...'></textarea>
+                             <input type='submit' name='post_message' class='info' id='message_submit' value='Send'>
+                        </form>
+                    </div>
+
+                    <script>
+                        //todo: finir l'implantation des tabs ( https://getbootstrap.com/docs/4.0/components/navs/#tabs )
+                        // $.('#profiletabs a').on('click', function (e){
+                        //     // e.preventDefault();
+                        //     // $(this).tab('show');
+                        // })
+
+                        let div = document.getElementById('scroll_messages');
+                        if (div !== null){
+                            div.scrollTop = div.scrollHeight;
+                        }
+
+
+                    </script>
                 </div>
             </div>
 
