@@ -15,6 +15,13 @@ $(document).ready(function () {
             }
         });
     });
+
+    $("#profiletabs a").on('click', function (event) {
+        event.preventDefault()
+        $(this).tab('show')
+    })
+
+
 });
 
 function getUser(value,user) {

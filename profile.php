@@ -29,6 +29,7 @@ if (isset($_POST['respond_request'])){
                 margin-left: 0;
                 padding-left: 0;
             }
+
         </style>
 
         <div class="profile_left">
@@ -87,18 +88,18 @@ if (isset($_POST['respond_request'])){
 
             <ul class="nav nav-tabs" role="tablist" id="profiletabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="newsfeed_div" aria-controls="newsfeed_div" role="tab" data-toggle="tab">Flux d'actualité</a>
+                    <a class="nav-link active" href="#newsfeed_div" role="tab" data-toggle="tab">Flux d'actualité</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about_div" aria-controls="about_div" role="tab" data-toggle="tab">About</a>
+                    <a class="nav-link" href="#message_div" data-list="conv" role="tab" data-toggle="tab">Messages</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="message_div" aria-controls="message_div" role="tab" data-toggle="tab">Messages</a>
+                    <a class="nav-link"  href="#about_div" role="tab" data-toggle="tab">About</a>
                 </li>
             </ul>
 
-            <div class="tab_content">
-                <div role="tabpanel" class="tab-pane fade show active" id="newsfeed_div">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active newsfeed" id="newsfeed_div">
                     <div class="posts_area"></div>
                     <img id="loading" src="assets/images/icons/loading.gif" alt="">
                 </div>
@@ -125,16 +126,20 @@ if (isset($_POST['respond_request'])){
                     </div>
 
                     <script>
-                        //todo: finir l'implantation des tabs ( https://getbootstrap.com/docs/4.0/components/navs/#tabs )
-                        // $.('#profiletabs a').on('click', function (e){
-                        //     // e.preventDefault();
-                        //     // $(this).tab('show');
-                        // })
 
-                        let div = document.getElementById('scroll_messages');
-                        if (div !== null){
+
+                        // let div = document.getElementById('scroll_messages');
+                        //
+                        // console.log(div);
+                        // if (div !== null){
+                        //     div.scrollTop = div.scrollHeight;
+                        //     console.log(div.scrollTop);
+                        // }
+
+                        $('a[data-toggle = "tab"]').on('shown.bs.tab', function () {
+                            let div = document.getElementById("scroll_messages");
                             div.scrollTop = div.scrollHeight;
-                        }
+                        })
 
 
                     </script>
