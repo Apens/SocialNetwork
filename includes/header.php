@@ -53,7 +53,7 @@ else {
                 <i class="fa fa-home"></i>
             </a>
 
-            <a href="messages.php">
+            <a href="javascript:void(0);" onclick="getDropdownData(<?= $userLoggedIn?>, 'message')">
                 <i class="fa fa-envelope"></i>
             </a>
             <a href="#">
@@ -70,6 +70,10 @@ else {
             </a>
 
         </nav>
+
+        <div class="dropdown_data_window">
+            <input type="hidden" id="dropdown_data_type" value="">
+        </div>
 
     </div>
 
