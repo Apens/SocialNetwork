@@ -53,7 +53,7 @@ else {
                 <i class="fa fa-home"></i>
             </a>
 
-            <a href="javascript:void(0);" onclick="getDropdownData(<?= $userLoggedIn?>, 'message')">
+            <a href="javascript:void(0);" onclick="getDropdownData('<?= $userLoggedIn ?>','message')">
                 <i class="fa fa-envelope"></i>
             </a>
             <a href="#">
@@ -71,11 +71,15 @@ else {
 
         </nav>
 
-        <div class="dropdown_data_window">
-            <input type="hidden" id="dropdown_data_type" value="">
-        </div>
+        <div class="dropdown_data_window" style="height: 0px; border:none;"></div>
+        <input type="hidden" id="dropdown_data_type" value="">
 
     </div>
 
     <div class="wrapper">
+
+<!--        <div style="height: 400px; width: 100%; background-color: #0c5460">-->
+<!--            <div class="dropdown_data_window" style="height: 0"></div>-->
+<!--            <input type="hidden" id="dropdown_data_type" value="">-->
+<!--        </div>-->
 
