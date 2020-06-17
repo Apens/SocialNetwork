@@ -38,7 +38,6 @@ function getDropdownData(user, type) {
 
         }
         else if (type == 'message') {
-            console.log('click');
             pageName = "ajax_load_messages.php";
             $("span").remove("#unread_message");
 

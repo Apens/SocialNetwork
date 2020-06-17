@@ -76,10 +76,50 @@ else {
 
     </div>
 
+    <script>
+        var userLoggedIn = '<?= $userLoggedIn; ?>';
+
+        $(document).ready(function () {
+
+            $('.dropdown_data_window').scroll(function () {
+                var inner_height = $('.dropdown_data_window').innerHeight(); // la div contenant les posts
+                var scroll_top = $('.dropdown_data_window').scrollTop();
+                var page = $('.dropdown_data_window').find('.nextPageDropDownData').val();
+                var noMoreData = $('.dropdown_data_window').find('.noMoreDropDownData').val();
+
+                if ((scroll_top + inner_height >= $('.dropdown_data_window')[0].scrollHeight)&& noMoreData === 'false') {
+                    console.log('ici')
+                    var pageName; //Contient le nom de la page à envoyer à la requete Ajax
+                    var type = $('#dropdown_data_type').val();
+
+                    if(type === 'notification')
+                        pageName= "ajax_load_notification.php";
+                    else if (type === 'message')
+                        pageName= 'ajax_load_messages.php';
+
+                    var ajaxReq = $.ajax({
+                        url: "includes/handlers/" + pageName, //on rensigne l'url qui traitera les données
+                        type: "POST", // On renseigne la methode
+                        data: "page="+ page +"&userLoggedIn=" + userLoggedIn, //REQUEST d'ajax
+                        cache: false,
+
+                        success: function (response) {
+                            $('.dropdown_data_window').find('.nextPageDropDownData').remove();
+                            $('.dropdown_data_window').find('.noMoreDropDownData').remove();
+
+                            $('.dropdown_data_window').append(response) //on ajoute d'autres données collectées dans la div
+
+                        }
+                    });
+
+                } // Fin IF
+                return false;
+
+            }); // Fin (dropdown_data_window).scroll function
+
+        });
+    </script>
+
     <div class="wrapper">
 
-<!--        <div style="height: 400px; width: 100%; background-color: #0c5460">-->
-<!--            <div class="dropdown_data_window" style="height: 0"></div>-->
-<!--            <input type="hidden" id="dropdown_data_type" value="">-->
-<!--        </div>-->
 
