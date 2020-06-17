@@ -46,6 +46,13 @@ else {
         </div>
 
         <nav>
+            <?php
+            //message non-lu
+            $messages = new Message($con, $userLoggedIn);
+            $num_messages = $messages->getUnreadNumber();
+
+            ?>
+
             <a href="<?= $userLoggedIn?>">
                 <?php echo $user['firstname'] ?>
             </a>
@@ -53,8 +60,13 @@ else {
                 <i class="fa fa-home"></i>
             </a>
 
-            <a href="javascript:void(0);" onclick="getDropdownData('<?= $userLoggedIn ?>','message')">
+            <a href="javascript:void(0);" onclick="getDropdownData('<?= $userLoggedIn; ?>','message')">
                 <i class="fa fa-envelope"></i>
+                <?php
+                if ($num_messages > 0)
+                    echo '<span class="notification_badge" id="unread_message">'.$num_messages. '</span>';
+                ?>
+
             </a>
             <a href="#">
                 <i class="fa fa-bell-o"></i>

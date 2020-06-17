@@ -188,7 +188,7 @@ class Message
         else
             $start = ($page -1) * $limit;
 
-        $set_viewed_query = mysqli_query($this->con, "UPDATE messages SET viewed= 'yes' WHERE user_to = 'userLoggedIn'");
+        $set_viewed_query = mysqli_query($this->con, "UPDATE messages SET viewed= 'yes' WHERE user_to = '$userLoggedIn'");
 
         $query = mysqli_query($this->con, "SELECT user_to, user_from FROM messages WHERE user_to = '$userLoggedIn' OR user_from ='$userLoggedIn' ORDER BY id DESC ");
 
@@ -242,11 +242,12 @@ class Message
                                      <input type='hidden' class='noMoreDropDownData' value='false'>";
         else
             return $return_string.= "<input type='hidden' class='noMoreDropDownData' value='true'> <p style='text-align: center'>Plus de message à charger</p>";
+    }
 
-        return $return_string;
-
-
-
+    public function getUnreadNumber(){
+        $userLoggedIn= $this->user_obj->getUsername();
+        $query = mysqli_query($this->con, "SELECT * FROM messages WHERE viewed='no' AND user_to='$userLoggedIn'");
+        return mysqli_num_rows($query);
     }
 
 
