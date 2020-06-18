@@ -227,11 +227,15 @@ if(isset($_POST['post_message'])) {
                     var page = $('.posts_area').find('.nextPage').val();
                     var noMorePosts = $('.posts_area').find('.noMorePosts').val();
 
-                    if ((document.body.scrollHeight == document.body.scrollTop + window.innerHeight)&& noMorePosts == 'false') {
+                    console.log(document.body.scrollHeight);
+                    console.log(document.body.scrollTop + window.innerHeight);
+
+                    if (((document.body.scrollHeight)-1 === document.body.scrollTop + window.innerHeight)&& noMorePosts === 'false') {
+                        console.log('ici');
                         $('#loading').show();
 
                         var ajaxReq = $.ajax({
-                            url: "includes/handlers/ajax_load_profile_post.php", //on rensigne l'url qui traitera les données
+                            url: "includes/handlers/ajax_load_profile_post.php", //on renseigne l'url qui traitera les données
                             type: "POST", // On renseigne la methode
                             data: "page="+ page +"&userLoggedIn=" + userLoggedIn + "&profileUsername=" + profileUsername, //REQUEST d'ajax
                             cache: false,

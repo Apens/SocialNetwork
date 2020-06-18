@@ -3,6 +3,7 @@ require 'config/config.php';
 include 'includes/classes/User.php';
 include 'includes/classes/Post.php';
 include 'includes/classes/Message.php';
+include 'includes/classes/Notification.php';
 
 if(isset($_SESSION['username'])){
     $userLoggedIn = $_SESSION['username'];
@@ -25,7 +26,7 @@ else {
     <!-- Javascript -->
 <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>-->
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/bootbox.min.js"></script>
     <script src="assets/js/jcrop_bits.js"></script>
@@ -51,6 +52,12 @@ else {
             $messages = new Message($con, $userLoggedIn);
             $num_messages = $messages->getUnreadNumber();
 
+
+            //notifications non-vu
+            $notification = new Notification($con, $userLoggedIn);
+            $num_notification = $notification->getUnreadNumber();
+
+
             ?>
 
             <a href="<?= $userLoggedIn?>">
@@ -68,8 +75,12 @@ else {
                 ?>
 
             </a>
-            <a href="#">
+            <a href="javascript:void(0);" onclick="getDropdownData('<?= $userLoggedIn; ?>','notification')">
                 <i class="fa fa-bell-o"></i>
+                <?php
+                if ($num_notification > 0)
+                    echo '<span class="notification_badge" id="unread_notification">'.$num_notification. '</span>';
+                ?>
             </a>
             <a href="request.php">
                 <i class="fa fa-users"></i>

@@ -14,7 +14,6 @@ class Post
 
     public function submitPost($body, $user_to)
     {
-
         $body = strip_tags($body);
         $body = mysqli_real_escape_string($this->con, $body);
 
@@ -42,6 +41,11 @@ class Post
         $returned_id= mysqli_insert_id($this->con);
 
          //Notification
+        if ($user_to != 'none') {
+            $notification = new Notification($this->con, $added_by); // futur bug
+            $notification->insertNotification($returned_id, $user_to, "profile_post" );
+        }
+
         //Mise a jour du nombre de post d'utilisateur
         $num_posts = $this->user_obj->getNumPosts();
         $num_posts++;
