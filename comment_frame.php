@@ -58,12 +58,14 @@ else {
         $insert_post = mysqli_query($con,"INSERT INTO comments (post_body, posted_by, posted_to, date_added, removed, post_id ) 
                                                 VALUES ('$post_body','$userLoggedIn', '$posted_to', '$date_time_now', 'no', '$post_id')");
         if ($posted_to != $userLoggedIn){
-            $notification = new Notification($con, $userLoggedIn); // futur bug
-            $notification->insertNotification($post_id, $row['posted_by'], "comment" );
+            var_dump($row);
+            var_dump($posted_to);
+            $notification = new Notification($con, $userLoggedIn);
+            $notification->insertNotification($post_id, $posted_to, "comment" );
         }
 
         if ( $user_to != 'none' && $user_to != $userLoggedIn) {
-            $notification = new Notification($con, $userLoggedIn); // futur bug
+            $notification = new Notification($con, $userLoggedIn);
             $notification->insertNotification($post_id, $user_to, "profile_comment" );
         }
 
@@ -73,7 +75,7 @@ else {
             if ($row['posted_by'] != $posted_to && $row['posted_by'] != $user_to
                 && $row['posted_by'] != $userLoggedIn && !in_array($row['posted_by'], $notified_users) ){
 
-                $notification = new Notification($con, $userLoggedIn); // futur bug
+                $notification = new Notification($con, $userLoggedIn);
                 $notification->insertNotification($post_id, $row['posted_by'], "comment_non_owner" );
 
                 array_push($notified_users, $row['posted_by']);

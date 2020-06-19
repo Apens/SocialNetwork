@@ -46,7 +46,8 @@ class Notification
 
         $link = "post.php?id=". $post_id;
 
-        $insert_query= mysqli_query($this->con, "INSERT INTO notifications(user_to, user_from, link, date_time, opened, viewed) VALUES ('$user_to','$userLoggedIn','$message','$link','$date_time','no', 'no')");
+        $insert_query= mysqli_query($this->con, "INSERT INTO notifications(user_to, user_from, link, date_time, opened, viewed) VALUES ('$user_to','$userLoggedIn','$link','$date_time','no','no')");
+
     }
 
 }

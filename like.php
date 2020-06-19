@@ -62,7 +62,7 @@
 
         //notification
         if($user_liked != $userLoggedIn) {
-            $notification = new Notification($con, $userLoggedIn); // futur bug
+            $notification = new Notification($con, $userLoggedIn);
             $notification->insertNotification($post_id, $user_liked, "profile_post" );
         }
     }

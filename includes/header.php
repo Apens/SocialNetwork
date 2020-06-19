@@ -110,8 +110,8 @@ else {
                 var page = $('.dropdown_data_window').find('.nextPageDropDownData').val();
                 var noMoreData = $('.dropdown_data_window').find('.noMoreDropDownData').val();
 
-                if ((scroll_top + inner_height >= $('.dropdown_data_window')[0].scrollHeight)&& noMoreData === 'false') {
-                    console.log('ici')
+
+                if ((scroll_top + inner_height +.61 >= $('.dropdown_data_window')[0].scrollHeight)&& noMoreData === 'false') {
                     var pageName; //Contient le nom de la page à envoyer à la requete Ajax
                     var type = $('#dropdown_data_type').val();
 

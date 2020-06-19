@@ -42,8 +42,9 @@ class Post
 
          //Notification
         if ($user_to != 'none') {
-            $notification = new Notification($this->con, $added_by); // futur bug
+            $notification = new Notification($this->con, $added_by);
             $notification->insertNotification($returned_id, $user_to, "profile_post" );
+
         }
 
         //Mise a jour du nombre de post d'utilisateur
