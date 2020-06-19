@@ -230,7 +230,7 @@ if(isset($_POST['post_message'])) {
                     console.log(document.body.scrollHeight);
                     console.log(document.body.scrollTop + window.innerHeight);
 
-                    if (((document.body.scrollHeight)-1 === document.body.scrollTop + window.innerHeight)&& noMorePosts === 'false') {
+                    if (((document.body.scrollHeight)-.69 === document.body.scrollTop + window.innerHeight)&& noMorePosts === 'false') {
                         console.log('ici');
                         $('#loading').show();
 
