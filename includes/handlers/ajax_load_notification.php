@@ -7,4 +7,4 @@ include("../classes/Notification.php");
 $limit = 7; //nombre de messages à charger
 
 $notification = new Notification($con, $_REQUEST['userLoggedIn']);
-echo $notification->getNotification($_REQUEST, $limit);
+echo $notification->getNotifications($_REQUEST, $limit);
