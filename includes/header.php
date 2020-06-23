@@ -46,6 +46,21 @@ else {
             <a href="index.php">Social Network</a>
         </div>
 
+        <div class="search">
+            <form action="search.php" method="GET" name="search_form">
+                <input type="text" onkeyup="getLiveSearchUsers(this.value, '<?= $userLoggedIn ?>')" name="q" placeholder="Chercher..." autocomplete="off" id="search_text_input">
+                <div class="button_holder">
+                    <img src="https://svgsilh.com/svg_v2/303408.svg" alt="">
+                </div>
+            </form>
+        </div>
+        <div class="search_result">
+
+        </div>
+        <div class="search_result_footer_empty">
+
+        </div>
+
         <nav>
             <?php
             //message non-lu
