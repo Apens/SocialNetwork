@@ -57,6 +57,12 @@ else {
             $notification = new Notification($con, $userLoggedIn);
             $num_notification = $notification->getUnreadNumber();
 
+            //demandes d'ami non-vu
+            $user_obj = new User($con, $userLoggedIn);
+            $num_request = $user_obj->getNumberOfFriendRequest();
+
+
+
 
             ?>
 
@@ -84,6 +90,10 @@ else {
             </a>
             <a href="request.php">
                 <i class="fa fa-users"></i>
+                <?php
+                if ($num_request > 0)
+                    echo '<span class="notification_badge" id="unread_notification">'.$num_request. '</span>';
+                ?>
             </a>
             <a href="#">
                 <i class="fa fa-cog"></i>

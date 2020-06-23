@@ -63,7 +63,7 @@
         //notification
         if($user_liked != $userLoggedIn) {
             $notification = new Notification($con, $userLoggedIn);
-            $notification->insertNotification($post_id, $user_liked, "profile_post" );
+            $notification->insertNotification($post_id, $user_liked, "like" );
         }
     }
 
