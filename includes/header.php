@@ -53,12 +53,12 @@ else {
                     <img src="https://svgsilh.com/svg_v2/303408.svg" alt="">
                 </div>
             </form>
-        </div>
-        <div class="search_result">
+            <div class="search_results">
 
-        </div>
-        <div class="search_result_footer_empty">
+            </div>
+            <div class="search_results_footer_empty">
 
+            </div>
         </div>
 
         <nav>

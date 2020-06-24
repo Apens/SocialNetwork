@@ -448,7 +448,7 @@ textarea:focus {
     text-decoration: none;
 }
 .liveSearchProfilePic img {
-    height: 50px;
+    height: 70px;
     border-radius: 25px;
     margin: 1px 12px 0 2px;
     float: left;
@@ -517,4 +517,56 @@ textarea:focus {
 .timestamp_smaller {
     font-size: 85%;
     margin: 0;
+}
+
+ /*############# Barre de recherche #############*/
+
+.search {
+    margin: 8px 0 0 15%;
+}
+.search #search_text_input {
+    border: thin solid #E5E5E5;
+    float: left;
+    height: 23px;
+    outline: 0;
+    width: 100px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+}
+.button_holder {
+    background: #F1F1F1;
+    border: thin solid #E5E5E5;
+    cursor: pointer;
+    float: left;
+    height: 23px;
+    text-align: center;
+    width: 50px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+}
+
+.button_holder img {
+    margin-top: 1px;
+    width: 20px;
+}
+
+.search_results {
+    background-color: #FFF;
+    border: 1px solid #DADADA;
+    border-bottom: none;
+    border-top: none;
+    margin-top: 21px;
+}
+.search_results_footer {
+    padding: 7px 4px 0 4px;
+    height: 30px;
+    border: 1px solid #DADADA;
+    border-top:  none;
+    background-color: #20AAE5;
+    text-align: center;
+}
+.search_results_footer a {
+    color: #FFF;
 }
