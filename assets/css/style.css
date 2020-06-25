@@ -437,7 +437,7 @@ textarea:focus {
 /*New message LiveSearch*/
 .resultDisplay {
     padding: 5px 5px 0 4px;
-    height: 60px;
+    height: 79px;
     border-bottom: 1px solid #D3D3D3;
 }
 .resultDisplay a {
