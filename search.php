@@ -30,14 +30,32 @@ if (isset($_GET['type'])){
                 if (count($names) == 3)
                     $usersReturnedQuery = mysqli_query($con, "SELECT * FROM users WHERE (firstname LIKE '$names[0]%' AND lastname LIKE '$names[2]%')AND user_closed = 'no'");
 
-    //S'il n'y a qu'1 seul mot dans la requete on cherche le prenom ou le nom
+                //S'il n'y a qu'1 seul mot dans la requete on cherche le prenom ou le nom
                 else  if (count($names) == 2)
                     $usersReturnedQuery = mysqli_query($con, "SELECT * FROM users WHERE (firstname LIKE '$names[0]%' AND lastname LIKE '$names[1]%')AND user_closed = 'no'");
                 else
                     $usersReturnedQuery = mysqli_query($con, "SELECT * FROM users WHERE (firstname LIKE '$names[0]%' OR lastname LIKE '$names[0]%')AND user_closed = 'no'");
             }
+            //on verifie que des resultats on été trouvé
+            if (mysqli_num_rows($usersReturnedQuery) == 0)
+                echo "il n'y a personne portant le nom". $type . "ou".$query;
+            else
+                echo  mysqli_num_rows($usersReturnedQuery)." résultats trouvés: <br> <br>";
 
-//S'il y a 2 mots, l'utilisateur fait une recherche avec le prenom et le nom
+
+            echo "<p id='grey'>tu cherches ça ? : </p> ";
+            echo "<a href='search.php?q=' ".$query."&type=name'>Names</a>, <a href='search.php?q=' ".$query."&type=username'>Usernames</a> <br> <br> <hr>";
+
+            while ($row = mysqli_fetch_array($usersReturnedQuery)){
+                $user_obj = new User($con, $user['username']);
+
+                $button = "";
+                $mutual_friends = "";
+
+                if ($user['username'] != $row['username']){
+
+                }
+            }
 
         }
     ?>
